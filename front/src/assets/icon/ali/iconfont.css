@@ -1,0 +1,22 @@
+@font-face {
+  font-family: 'lpIconfont'; /* Project id 3905087 */
+  src: url('iconfont.woff2?t=1676866099539') format('woff2'),
+    url('iconfont.woff?t=1676866099539') format('woff'),
+    url('iconfont.ttf?t=1676866099539') format('truetype');
+}
+
+.lpIconfont {
+  font-family: 'lpIconfont' !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.lp-taiyang-copy:before {
+  content: '\e64c';
+}
+
+.lp-yueliang:before {
+  content: '\e6b6';
+}
