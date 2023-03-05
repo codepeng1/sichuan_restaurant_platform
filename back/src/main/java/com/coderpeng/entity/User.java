@@ -45,4 +45,15 @@ public class User {
      */
     @TableField(select = false)
     private Integer deleted;
+
+    /**
+     * 开始时间
+     */
+    @TableField(exist = false, select = false)
+    private Date startTime;
+    /**
+     * 截止时间
+     */
+    @TableField(exist = false, select = false)
+    private Date endTime;
 }

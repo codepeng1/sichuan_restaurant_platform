@@ -1,3 +1,1 @@
-export interface ITheme {
-  type: string
-}
+export { }

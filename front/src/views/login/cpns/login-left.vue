@@ -129,6 +129,9 @@ const onFinishFailed = () => {
     transform translate(-50%, -50%) scale(1.2)
     padding .3125rem .625rem
     box-shadow .0625rem .0625rem .3125rem #eee
+    transition all 0.3s
+    &:hover
+      box-shadow 0 .0625rem .375rem #ddd
     :deep(.ant-form-item-explain-error)
       font-size .2188rem
     .left_form_header

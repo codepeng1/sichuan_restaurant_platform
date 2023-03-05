@@ -2,6 +2,8 @@ package com.coderpeng.controller;
 
 import com.coderpeng.api.Code;
 import com.coderpeng.api.Result;
+import com.coderpeng.entity.PageInfo;
+import com.coderpeng.entity.PageResult;
 import com.coderpeng.entity.User;
 import com.coderpeng.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,9 +31,39 @@ public class UserController {
     }
 
     /**
-     * 通过id获取用户信息
+     * 删除用户
+     *
      * @param id 用户id
-     * @return User
+     */
+    @DeleteMapping("/{id}")
+    public Result deleteUser(@PathVariable Long id) {
+        boolean b = iUserService.removeById(id);
+        return new Result(b ? Code.DELETE_OK : Code.DELETE_ERR, b, b ? "用户删除成功~" : "用户删除失败!");
+    }
+
+    /**
+     * 修改用户
+     */
+    @PutMapping
+    public Result updateUser(@RequestBody User user) {
+        boolean b = iUserService.updateById(user);
+        return new Result(b ? Code.UPDATE_OK : Code.UPDATE_ERR, b, b ? "用户修改成功~" : "用户修改失败!");
+    }
+
+    /**
+     * 获取所有用户列表
+     */
+    @PostMapping("/list")
+    public Result findAll(Long current, Long size, @RequestBody User user) {
+        PageResult pageResult = iUserService.findAll(new PageInfo(current, size), user);
+        boolean b = pageResult.getList() != null;
+        return new Result(b ? Code.GET_OK : Code.GET_ERR, pageResult, b ? "获取用户列表成功~" : "获取用户列表失败!");
+    }
+
+    /**
+     * 通过id获取用户信息
+     *
+     * @param id 用户id
      */
     @GetMapping("/{id}")
     public Result getById(@PathVariable Long id) {

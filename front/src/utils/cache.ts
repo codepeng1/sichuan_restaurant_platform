@@ -1,5 +1,7 @@
 // 缓存工具
 
+import { decrypto, encrypto } from './crypto'
+
 // 支持的缓存方案枚举
 enum Schema {
   LOCALSTORAGE = 'LOCALSTORAGE',
@@ -22,10 +24,10 @@ class Cache {
   setCache(key: string, value: any) {
     switch (this.schema) {
       case Schema.LOCALSTORAGE:
-        window.localStorage.setItem(key, JSON.stringify(value))
+        window.localStorage.setItem(key, encrypto(value))
         break
       case Schema.SESSIONSTORAGE:
-        window.sessionStorage.setItem(key, JSON.stringify(value))
+        window.sessionStorage.setItem(key, encrypto(value))
         break
       default: {
         const err: never = this.schema
@@ -46,11 +48,11 @@ class Cache {
     switch (this.schema) {
       case Schema.LOCALSTORAGE: {
         const value = window.localStorage.getItem(key)
-        return value ? JSON.parse(value) : ''
+        return value ? decrypto(value) : ''
       }
       case Schema.SESSIONSTORAGE: {
         const value = window.sessionStorage.getItem(key)
-        return value ? JSON.parse(value) : ''
+        return value ? decrypto(value) : ''
       }
       default: {
         const err: never = this.schema

@@ -1,5 +1,6 @@
+import { localCache } from '@/utils/cache'
 import { defineStore } from 'pinia'
-import type { ITheme } from '../types'
+import { ref } from 'vue'
 
 // 主题类型
 enum ThemeType {
@@ -7,17 +8,17 @@ enum ThemeType {
   Light = 'light'
 }
 
-export const useThemeStore = defineStore({
-  id: 'theme',
-  state: (): ITheme => ({
-    type: ThemeType.Dark
-  }),
-  actions: {
-    /**
-     * 设置主题类型
-     */
-    setType(type: string) {
-      this.type = type
-    }
+export const useThemeStore = defineStore('theme', () => {
+  const theme = localCache.getCache('theme')
+  if (theme === 'dark') {
+    document.documentElement.removeAttribute('theme')
+  } else {
+    document.documentElement.setAttribute('theme', theme)
   }
+  const type = ref<string>(theme ?? ThemeType.Dark)
+  const setType = (value: string) => {
+    type.value = value
+  }
+
+  return { type, setType }
 })

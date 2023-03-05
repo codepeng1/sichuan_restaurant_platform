@@ -37,7 +37,11 @@ public class RequestFilter implements Filter {
                 return;
             } else {
                 //其他请求验证token
-                String token = ((HttpServletRequest) servletRequest).getHeader("Authorization").split("Bearer ")[1];
+                String token = null;
+                String authorization = ((HttpServletRequest) servletRequest).getHeader("Authorization");
+                if (authorization != null) {
+                    token = authorization.split("Bearer ")[1];
+                }
                 if (StringUtils.isNotBlank(token)) {
                     //token验证结果
                     int verify = jwtUitls.verify(token);

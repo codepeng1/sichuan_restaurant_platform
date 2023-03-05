@@ -1,19 +1,16 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
+import { useThemeStore } from '@/stores/modules/theme'
 
 const emit = defineEmits<{
   (event: 'change', type: string): void
 }>()
 
-let type = ref('dark')
+const themeStore = useThemeStore()
+let type = ref(themeStore.type)
 
 const handleThemeToggleClick = (value: string) => {
   type.value = value
-  if (value === 'dark') {
-    document.documentElement.removeAttribute('theme')
-  } else {
-    document.documentElement.setAttribute('theme', value)
-  }
   emit('change', value)
 }
 </script>
