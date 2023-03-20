@@ -3,6 +3,7 @@ import { createPinia } from 'pinia'
 import App from './App.vue'
 import router, { addDynamicRoute } from './router'
 import globalRegister from './global'
+import initDirective from './directive'
 
 import './assets/css/index.styl'
 import './assets/icon'
@@ -12,6 +13,7 @@ import 'lib-flexible/flexible.js'
 const app = createApp(App)
 
 app.use(globalRegister)
+app.use(initDirective)
 app.use(createPinia())
 
 addDynamicRoute().then(() => {

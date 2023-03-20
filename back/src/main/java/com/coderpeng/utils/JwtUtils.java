@@ -16,7 +16,7 @@ import java.util.Map;
  * desc:
  */
 @Component
-public class JwtUitls {
+public class JwtUtils {
     @Autowired
     private IUserService userService;
 

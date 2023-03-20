@@ -2,7 +2,7 @@
 import { ref, provide, onMounted, onUnmounted } from 'vue'
 import NavMenu from '@/components/nav-menu'
 import NavHeader from '@/components/nav-header'
-import { useThemeStore } from '@/stores/modules/theme'
+import { useThemeStore } from '@/stores/modules/theme/theme'
 
 const themeStore = useThemeStore()
 
@@ -46,7 +46,7 @@ onUnmounted(() => {
         <nav-menu :isCollapse="isCollapse" />
       </a-layout-sider>
       <a-layout class="main_body">
-        <a-layout-header>
+        <a-layout-header class="main_nav_header">
           <nav-header />
         </a-layout-header>
         <div class="main_body_content" :class="{ main_body_content_fullscreen: isFullscreen }">
@@ -74,6 +74,8 @@ onUnmounted(() => {
       padding 0 .3125rem
       background var(--bg-color)
     .main_body
+      .main_nav_header
+        height 1.25rem
       .main_body_content
         position relative
         box-sizing border-box
@@ -84,10 +86,11 @@ onUnmounted(() => {
         background var(--bg-color)
         border-radius .125rem
         padding .5rem .5625rem
+        overflow-y scroll
         .content_fullscreen
           position absolute
-          top -1%
-          right 0
+          top 0
+          right .0625rem
           cursor pointer
       .main_body_content_fullscreen
         position fixed

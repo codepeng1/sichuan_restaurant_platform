@@ -33,7 +33,7 @@ const emit = defineEmits<{
   (e: 'update:modelValue', newValue: object): object
 }>()
 
-const formState = ref({ ...props.modelValue })
+let formState = ref({ ...props.modelValue })
 const formRules = ref<{ [propName: string]: any }>({})
 for (const item of props.formItems) {
   formRules.value[item.field] = item.rules
@@ -43,6 +43,10 @@ const { validate } = Form.useForm(formState, formRules)
 const validateForm = () => {
   return validate()
 }
+
+watch(props.modelValue, (newValue: object) => {
+  formState.value = { ...newValue }
+})
 
 watch(
   formState,

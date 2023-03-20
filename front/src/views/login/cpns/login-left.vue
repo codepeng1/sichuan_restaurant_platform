@@ -2,8 +2,8 @@
 import { reactive, onMounted } from 'vue'
 import Logo from '@/components/logo'
 import router from '@/router'
-import { useLoginStore } from '@/stores/modules/login'
-import { useMessage } from '@/hooks/useMessage'
+import { useLoginStore } from '@/stores/modules/login/login'
+import { useMessage } from '@/hooks/use-message'
 import { localCache } from '@/utils/cache'
 const message = useMessage()
 const loginStore = useLoginStore()

@@ -1,7 +1,7 @@
 package com.coderpeng.filter;
 
 import com.alibaba.fastjson.JSONObject;
-import com.coderpeng.utils.JwtUitls;
+import com.coderpeng.utils.JwtUtils;
 import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletRequest;
@@ -23,7 +23,7 @@ import java.util.Map;
 public class RequestFilter implements Filter {
 
     @Autowired
-    public JwtUitls jwtUitls;
+    public JwtUtils jwtUtils;
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
@@ -44,7 +44,7 @@ public class RequestFilter implements Filter {
                 }
                 if (StringUtils.isNotBlank(token)) {
                     //token验证结果
-                    int verify = jwtUitls.verify(token);
+                    int verify = jwtUtils.verify(token);
                     if (verify == 1) {
                         //验证成功，放行
                         filterChain.doFilter(servletRequest, resp);

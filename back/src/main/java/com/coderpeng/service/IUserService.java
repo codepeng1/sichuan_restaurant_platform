@@ -12,4 +12,8 @@ import com.coderpeng.entity.User;
  */
 public interface IUserService extends IService<User> {
     PageResult findAll(PageInfo pageInfo, User user);
+
+    Boolean saveUser(User user);
+
+    Boolean updateUserById(User user);
 }

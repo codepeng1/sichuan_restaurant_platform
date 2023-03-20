@@ -5,7 +5,7 @@ import { localCache } from '@/utils/cache'
 import router from '@/router'
 import { pathMapToMenu } from '@/utils/map-menus'
 import { useRoute } from 'vue-router'
-import { useThemeStore } from '@/stores/modules/theme'
+import { useThemeStore } from '@/stores/modules/theme/theme'
 
 const themeStore = useThemeStore()
 

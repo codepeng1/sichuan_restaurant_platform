@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.coderpeng.dao.UserDao;
 import com.coderpeng.entity.User;
 import com.coderpeng.service.ILoginService;
-import com.coderpeng.utils.JwtUitls;
+import com.coderpeng.utils.JwtUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
@@ -22,7 +22,7 @@ import java.util.Map;
 public class LoginServiceImpl extends ServiceImpl<UserDao, User> implements ILoginService {
 
     @Autowired
-    public JwtUitls jwtUitls;
+    public JwtUtils jwtUtils;
 
     /**
      * 用户登录
@@ -37,7 +37,7 @@ public class LoginServiceImpl extends ServiceImpl<UserDao, User> implements ILog
         if (user1 == null) return null;
 
         // 登录成功
-        String token = jwtUitls.createToken(user1.getId().toString(), user1.getUsername());
+        String token = jwtUtils.createToken(user1.getId().toString(), user1.getUsername());
 
         return new HashMap<>() {{
             put("id", user1.getId());

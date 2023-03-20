@@ -1,9 +1,13 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import zhCN from 'ant-design-vue/es/locale/zh_CN'
+</script>
 
 <template>
-  <div class="app">
-    <router-view></router-view>
-  </div>
+  <a-config-provider :locale="zhCN">
+    <div class="app">
+      <router-view></router-view>
+    </div>
+  </a-config-provider>
 </template>
 
 <style scoped lang="stylus">

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { useMessage } from '@/hooks/useMessage'
+import { useMessage } from '@/hooks/use-message'
 import router from '@/router'
 import { localCache } from '@/utils/cache'
 const message = useMessage()

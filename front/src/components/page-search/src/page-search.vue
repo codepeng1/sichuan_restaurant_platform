@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 import LpForm from '@/base-ui/form'
 import type { IForm } from '@/base-ui/form/types'
-import { useMessage } from '@/hooks/useMessage'
+import { useMessage } from '@/hooks/use-message'
 
 const props = withDefaults(
   defineProps<{

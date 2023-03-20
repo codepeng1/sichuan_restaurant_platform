@@ -26,7 +26,7 @@ public class UserController {
      */
     @PostMapping
     public Result saveUser(@RequestBody User user) {
-        boolean b = iUserService.save(user);
+        boolean b = iUserService.saveUser(user);
         return new Result(b ? Code.SAVE_OK : Code.SAVE_ERR, b, b ? "用户新增成功~" : "用户新增失败!");
     }
 
@@ -46,7 +46,7 @@ public class UserController {
      */
     @PutMapping
     public Result updateUser(@RequestBody User user) {
-        boolean b = iUserService.updateById(user);
+        boolean b = iUserService.updateUserById(user);
         return new Result(b ? Code.UPDATE_OK : Code.UPDATE_ERR, b, b ? "用户修改成功~" : "用户修改失败!");
     }
 

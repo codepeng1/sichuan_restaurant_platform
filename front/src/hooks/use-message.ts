@@ -1,4 +1,4 @@
-import { getCurrentInstance } from 'vue'
+import { message } from 'ant-design-vue'
 
 interface IMessage {
   success: any
@@ -9,5 +9,5 @@ interface IMessage {
 }
 
 export function useMessage(): IMessage {
-  return getCurrentInstance()?.appContext.config.globalProperties.$message
+  return message
 }

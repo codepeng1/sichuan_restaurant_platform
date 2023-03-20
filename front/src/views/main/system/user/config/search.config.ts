@@ -17,9 +17,16 @@ export const searchFormConfig: IForm = {
       placeholder: '请输入'
     },
     {
-      field: 'createTime',
+      field: 'startTime',
       type: 'datepicker',
-      label: '创建时间', // /^1(3\d|4[5-9]|5[0-35-9]|6[2567]|7[0-8]|8\d|9[0-35-9])\d{8}$/
+      label: '开始时间',
+      rules: [],
+      placeholder: '请选择'
+    },
+    {
+      field: 'endTime',
+      type: 'datepicker',
+      label: '截止时间',
       rules: [],
       placeholder: '请选择'
     }

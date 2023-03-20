@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import LpThemeToggle from '@/base-ui/theme-toggle'
 import UserInfo from './user-info.vue'
-import { useThemeStore } from '@/stores/modules/theme'
+import { useThemeStore } from '@/stores/modules/theme/theme'
 import { localCache } from '@/utils/cache'
 
 const themeStore = useThemeStore()
